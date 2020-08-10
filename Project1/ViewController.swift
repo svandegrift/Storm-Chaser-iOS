@@ -25,6 +25,7 @@ class ViewController: UITableViewController {
                 pictures.append(item)
             }
         }
+        pictures.sort()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,6 +41,7 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(identifier: "Detail") as? DetailViewController {
             vc.selectedImage = pictures[indexPath.row]
+            vc.newTitle = "Image \(indexPath.row + 1) of \(pictures.count)"
             navigationController?.pushViewController(vc, animated: true)
         }
     }
