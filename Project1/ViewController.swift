@@ -26,6 +26,15 @@ class ViewController: UITableViewController {
             }
         }
         pictures.sort()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
+    }
+    
+    @objc func shareTapped(){
+        let shareMessage = "You should try out this awesome storm app! [link goes here]"
+        
+        let vc = UIActivityViewController(activityItems: [shareMessage], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
